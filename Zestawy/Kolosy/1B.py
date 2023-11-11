@@ -18,7 +18,7 @@ def is_prime(num):
         return False
 def zad1(T):
     n=len(T)
-    maxi=1
+    maxi=0
     ind=None
     ilo=1
     for i in range(n):
