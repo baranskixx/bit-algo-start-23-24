@@ -19,7 +19,7 @@ def is_prime(num):
 def zad1(T):
     n=len(T)
     maxi=1
-    ind=0
+    ind=None
     ilo=1
     for i in range(n):
         if is_prime(T[i]):
