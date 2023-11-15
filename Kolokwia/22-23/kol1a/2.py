@@ -30,7 +30,7 @@ def seq(T):
             leng=2
             k=2
             first=T[i][j]
-            if ciong(first):
+            if ciong(first) and ciong(sec):
                 sec=T[i+1][j+1]
                 while i+k<n and j+k<n:
                     if T[i+k][j+k]==first+sec-1:
