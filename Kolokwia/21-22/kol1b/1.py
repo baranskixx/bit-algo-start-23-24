@@ -1,3 +1,7 @@
+### BIT ALGO START
+### Autor: Marcin Serafin
+
+
 # Idea:
 # Sposobem na rozwiązanie tego zadania jest jednokrotne przejście przez tablice
 # Jeżeli spotkamy liczbe pierwszą to mnożymy ją przez nasz iloczyn (na początku równy 1)
