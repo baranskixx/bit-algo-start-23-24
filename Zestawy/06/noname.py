@@ -10,21 +10,21 @@
 # Porównuje maksymalny licznik(zmienna maxi) z kolejny wywołaniem (ruchem)
 # Nie bierzemy pod uwage czy w ogóle da sie dojść do prawego dolnego rogu
 
-def zad(T,P):
-    def rek(T,P,y,x,cnt,prev):
+def king(N,L):
+    def rek(N,L,y,x,cnt,prev):
         maxi=0
-        if y==len(T)-1 and x==len(T)-1:
+        if y==N-1 and x==N-1:
             return cnt
-        if x<len(T)-1 and (x+1,y) not in P:
-            maxi=max(maxi,rek(T,P,y,x+1,cnt+T[y][x+1],None))
-        if y<len(T)-1 and (x,y+1) not in P:
+        if x<N-1 and (y,x+1) not in L:
+            maxi=max(maxi,rek(N,L,y,x+1,cnt+1,None))
+        if y<N-1 and (y+1,x) not in L:
              if prev!="down":
-                maxi=max(maxi,rek(T,P,y+1,x,cnt+T[y+1][x],"up"))
-        if y>0 and (x,y-1) not in P:
+                maxi=max(maxi,rek(N,L,y+1,x,cnt+1,"up"))
+        if y>0 and (y-1,x) not in L:
             if prev!="up":
-                maxi=max(maxi, rek(T,P,y-1,x,cnt+T[y-1][x],"down"))
+                maxi=max(maxi, rek(N,L,y-1,x,cnt+1,"down"))
         return maxi
-    return(rek(T,P,0,0,T[0][0],None))
-P=[(1,1)]
-T=[[1,1,1],[1,2,13],[1,3,1]]
-print(zad(T,P))
+    return(rek(N,L,0,0,0,None))
+L=[(0,1)]
+N=3
+print(king(N,L))
