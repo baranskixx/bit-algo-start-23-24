@@ -11,8 +11,8 @@ def odcinki(T):
             return suma == 2022
         
         valid_candidate = True
-        for x in range(0, i-1):
-            if inter(T[i], T[x]):
+        for x in range(0, i):
+            if U[x] and inter(T[i], T[x]):
                 valid_candidate = False
                 break
         
