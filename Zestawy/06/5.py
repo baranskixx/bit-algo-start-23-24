@@ -1,3 +1,17 @@
+### BIT ALGO START
+### Autor: Marcin Serafin
+
+# Idea:
+# Rozwiązanie tego zadania będzie polegało na stworzeniu sobie klasycznych funkcji to_decimal i is_prime
+# Następnie rekurencyjnie wywołujemy funkcje która albo bierze albo nie bierze indeksu na którym jesteśmy
+# Jeżeli nie bierze to sprawdza czy już wzięte indeksy składają sie na liczbe pierwszą
+# Jeżeli tak to funkcja uruchamia sie dalej
+# Jeżeli nie to zwraca False
+# Robimy tak aż do ostatniego indeksu dla którego ponownie sprawdzamy czy wzięte indeksy tworzą liczbe pierwszą
+# Dodatkowo przed sprawdziem "pierwszości" liczby możemy sprawdzić czy kończy sie 0 mając więcej niż 2 cyfry
+# (na 0 kończą sie parzyste a 10 czyli 2 w dziesiętnym jako jedyna pierwsza jest parzysta)
+
+
 from math import sqrt
 def is_prime(n):
     if n<2:
@@ -15,25 +29,23 @@ def is_prime(n):
             return False
         i+=2
     return True
-
-def to_decimal(T):
+def decimal(T):
     res=0
     n=len(T)
     for i in range(n):
         res+=T[i]*(2**(n-i-1))
     return res
-
-def zad6(T):
-    def rek(T,i,j):
-        if j>=len(T):
+def zad5(T):
+    def rek(i,j,T):
+        if j>len(T)-1:
             return False
-        if j==len(T)-1 and is_prime(to_decimal(T[i:j+1])):
-            return True
-        if is_prime(to_decimal(T[i:j+1])):
-            return rek(T,j+1,j+2) or rek(T,i,j+1)
-        else:
-            return rek(T,i,j+1)
-    return rek(T,0,1)
-
-T=[1,1,1,0,1,1]
-print(zad6(T))
+        if j==len(T)-1:
+            if T[j-1]==0 and j-i+1!=2:
+                return False
+            return is_prime(decimal(T[i:j+1]))
+        if is_prime(decimal(T[i:j+1])):
+            return rek(j+1,j+2,T)
+        return rek(i,j+1,T)  
+    return rek(0,1,T) if len(T)>1 else False
+T=[1,1,0,1,0,0]
+print(zad5(T))
